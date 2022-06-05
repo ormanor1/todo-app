@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -11,20 +11,21 @@ import logger from 'redux-logger';
 
 import rootReducer from './store/reducers/rootReducer';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root'),
-);
+// const root = ReactDOM.createRoot(
+//   document.getElementById('root'),
+// );
 
 const store = createStore(
   rootReducer,
   applyMiddleware(thunk, logger),
 );
 
-root.render(
+ReactDOM.render(
   // <React.StrictMode>
   <Provider store={store}>
     <App />
   </Provider>,
+  document.getElementById('root'),
   // </React.StrictMode>,
 );
 
